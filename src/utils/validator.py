@@ -2,19 +2,20 @@ from src.utils.bcrypt import bcrypt
 from functools import wraps
 from flask import request, jsonify
 from os import getenv
+import json
 
 class auth_decorator():
     
-    def verify_auth(self):
-        o_request = request.get_json()
+    def verify_auth(self):  
+        o_request = json.loads(request.get_json())
         try:
-            if(not o_request.get('oauth')):
+            if(not o_request['oauth']):
                 return{
                         "msm":"UNAUTHORIZED",
                         "err":"Objeto de autorizacion no encontrado, por favor intente nuevamente"
                         }
-            o_usr = o_request["oauth"]["usr"]
-            o_pass = o_request["oauth"]["pass"] 
+            o_usr = o_request['oauth']['usr']
+            o_pass = o_request['oauth']['pass'] 
             usr = getenv("api_usr")
             pss = getenv("api_pss")
             if(not bcrypt().match(str(usr), o_usr) or not bcrypt().match(str(pss), o_pass)):

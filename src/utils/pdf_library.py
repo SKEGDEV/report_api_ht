@@ -27,8 +27,8 @@ class objt_reportLibrary():
     def make_pdf(self):
         try:
             config = pdfkit.configuration(wkhtmltopdf=getenv('pdf_convert'))
-            pdf = pdfkit.from_string(self.make_template(), False, css=[], configuration=config)
-            pdfBase64 = self.file2base64(pdf)
+            pdfkit.from_string(self.make_template(), 'output.pdf', configuration=config) 
+            pdfBase64 = self.file2base64('output.pdf')
             return{
                     "msm":"success",
                     "rpt":pdfBase64
