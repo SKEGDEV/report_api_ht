@@ -3,52 +3,70 @@
 <head>
   <meta charset="UTF-8">
   <title></title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 </head>
-<body>  
-  <div style="width: 100%; display: flex; flex-wrap:wrap; text-align: center;">
-    <img src="" alt="" style="width: 40%;">
-    <div style="width: 60%;">
+<body style="font-family: 'Montserrat', sans-serif;">  
+  {% for d in header %}
+  <div style="width: 100%; display: flex; flex-direction:column; text-align: center;">
+    <img src="" alt="" style="width: 100%;">
+    <div style="width: 100%; text-align: center;">
       <h1>BOLETA DE CALIFICACIONES</h1>
       <p>***********Boleta de calificaciones para escuelas y/o institutos privados***********</p>
+      <p>***********{{d.6}}***********</p>
+      <p>***********{{d.7}}***********</p>
+      <p>***********Nivel de educacion: {{d.4}}  ***********</p>
+      <p>***********Generado: {{date}} ***********</p>
     </div>
     <div style="width: 100%; display: flex; flex-direction: row;">
-      <div>
-        <h4>Codigo de alumno: </h4>
-        <p></p>
+      <div style="display: flex; flex-direction: row;">
+	<h4>Codigo de alumno: {{d.1}}</h4>	
       </div>
-      <div>
-        <h4>Nombre completo del alumno: </h4>
-        <p></p>
+      <div style="display: flex; flex-direction: row;">
+        <h4>Nombre completo del alumno: {{d.0}}</h4> 
       </div>
-      <div>
-        <h4>Informacion del grado: </h4>
-        <p></p>
+      <div style="display: flex; flex-direction: row;">
+	<h4>Grado: {{d.2}}</h4> 
+      </div>
+      <div style="display: flex; flex-direction: row;">
+        <h4>Seccion: {{d.3}}</h4>
+      </div>
+      <div style="display: flex; flex-direction: row;">
+        <h4>Ciclo: {{d.5}}</h4>	
       </div>
     </div>
   </div>
-  <div>
-    <table class="table table-bordered border-primary">
+  {% endfor %}
+  <div style="margin: 10px 70px 70px;">
+    <table style="border-radius: 5px;font-size: 12px;font-weight: normal;border: none;border-collapse: collapse;width: 100%;max-width:100%;white-space: nowrap;background-color: white;">
       <thead>
         <tr>
-          <th colspan="2">Nombre del curso</th>
-          <th scope="col">Unidad 1</th>
-          <th scope="col">Unidad 2</th>
-          <th scope="col">Unidad 3</th>
-          <th scope="col">Unidad 4</th>
-          <th scope="col">Promedio</th>
+          <th style="text-align: center;padding: 8px;color: #ffffff;background: #4FC3A1;">Nombre del curso</th>
+          <th style="text-align: center;padding: 8px;color: #ffffff;background: #324960;">Unidad 1</th>
+          <th style="text-align: center;padding: 8px;color: #ffffff;background: #324960;">Unidad 2</th>
+          <th style="text-align: center;padding: 8px;color: #ffffff;background: #324960;">Unidad 3</th>
+          <th style="text-align: center;padding: 8px;color: #ffffff;background: #324960;">Unidad 4</th>
+          <th style="text-align: center;padding: 8px;color: #ffffff;background: #4FC3A1;">Promedio</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td colspan="2">Ingles curso</td>
-          <td>0</td>
-          <td>0</td>
-          <td>0</td>
-          <td>0</td>
-          <td>0</td>
+	{% for d in qualifications %}
+        <tr style="background: #F8F8F8;">
+	  <td style="text-align: center;padding: 8px;border-right: 1px solid #f8f8f8;font-size: 12px; width: 30%;">{{d.0}}</td>
+	  <td style="text-align: center;padding: 8px;border-right: 1px solid #f8f8f8;font-size: 12px;">{{d.1}}</td>
+	  <td style="text-align: center;padding: 8px;border-right: 1px solid #f8f8f8;font-size: 12px;">{{d.2}}</td>
+	  <td style="text-align: center;padding: 8px;border-right: 1px solid #f8f8f8;font-size: 12px;">{{d.3}}</td>
+	  <td style="text-align: center;padding: 8px;border-right: 1px solid #f8f8f8;font-size: 12px;">{{d.4}}</td>
+	  <td style="text-align: center;padding: 8px;border-right: 1px solid #f8f8f8;font-size: 12px;">{{d.5}}</td>
         </tr>
+	{% endfor %}
       </tbody>
     </table>
+  </div>
+  <div style="width: 100%; text-align: center; display: flex; flex-direction:column;">
+    <p style="margin-bottom: 10px;">F_____________________________</p>
+    <p>Firma de Docente</p>
   </div>
 </body>
 </html>
