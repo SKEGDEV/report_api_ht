@@ -19,9 +19,9 @@ class objt_reportLibrary():
         if(self.name == "qa"):
             return render_template("qualification.html", header=self.data.get("q_header"), qualifications=self.data.get("o_qualification"), date=today)
         if(self.name == "ap"):
-            return render_template("apretitation.html")
+            return render_template("apretiation.html", header=self.data.get("o_header"), info=self.data.get("o_info"), qa=self.data.get("o_body"), year=self.data.get("year"))
         if(self.name == "ct"):
-            return render_template("cotejo_list.html")
+            return render_template("cotejo_list.html", header=self.data.get("o_header"), info=self.data.get("o_info"), qa=self.data.get("o_body"), year=self.data.get("year"))
 
 
     def make_pdf(self):
